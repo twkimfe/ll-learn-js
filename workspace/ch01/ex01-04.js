@@ -2,4 +2,7 @@
 명령문과 주석
 */
 
-console.log("hello world!!");
+console.log("Hello world!!");
+console.log("Hello");
+console.log("World!!");
+
