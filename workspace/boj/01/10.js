@@ -36,8 +36,15 @@
 
 const fs = require("fs");
 const inputData = fs.readFileSync(0).toString().trim().split("\n");
-console.log(inputData);
-
+// console.log(inputData);
 const a = parseInt(inputData[0]);
 const b = parseInt(inputData[1]);
 
+const part3 = a * 5;
+const part4 = a * 8;
+const part5 = a * 3;
+const sum = part3 + part4 * 10 + part5 * 100;
+console.log(part3);
+console.log(part4);
+console.log(part5);
+console.log(sum);
