@@ -45,3 +45,8 @@
 4
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split("\n");
+// console.log(inputData);
+const a = parseInt(inputData[0]);
+const b = parseInt(inputData[1]);
