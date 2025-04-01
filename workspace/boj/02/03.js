@@ -27,3 +27,12 @@
 0
 */
 
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split(" ");
+// console.log(fileData);
+
+const year = parseInt(fileData[0]);
+
+if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
+  console.log(1);
+} else console.log(0);

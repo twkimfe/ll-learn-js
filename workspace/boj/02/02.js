@@ -19,3 +19,13 @@
 A
 */
 
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split(" ");
+
+const score = parseInt(fileData[0]);
+
+if (score >= 60 && score <= 69) console.log("D");
+else if (score >= 70 && score <= 79) console.log("C");
+else if (score >= 80 && score <= 89) console.log("B");
+else if (score >= 90 && score <= 100) console.log("A");
+else console.log("F");

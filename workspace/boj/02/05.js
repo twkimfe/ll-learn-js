@@ -40,3 +40,9 @@
 22 55
 */
 
+const fs = require('fs');
+const fileData = fs.readFileSync(0).toString().trim().split(' ');
+// console.log(fileData);
+
+const h = parseInt(fileData[0]);
+const m = parseInt(fileData[1]);
