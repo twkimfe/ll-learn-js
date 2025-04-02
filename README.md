@@ -193,6 +193,29 @@
   - 💻 오븐 시계 - [boj/02/06.js](./workspace-ins/boj/02/06.js)
   - 💻 주사위 세개 - [boj/02/07.js](./workspace-ins/boj/02/07.js)
 
+### 5일차(수)
+##### 오전(3시간)
+* 📜 if-else if문
+  - 💻 [01-18-05 if-else if문을 사용하여 계산기, 요일, 계절 출력](./workspace-ins/ch01/ex01-18-05.js)
+* 📜 switch문
+  - 💻 [01-19 switch문](./workspace-ins/ch01/ex01-19.js)
+  - 💻 [01-19-02 switch문을 사용하여 학점 출력](./workspace-ins/ch01/ex01-19-02.js)
+  - 💻 [01-19-03 switch문을 사용하여 계산기, 요일, 계절 출력](./workspace-ins/ch01/ex01-19-03.js)
+
+##### 오후(3시간)
+* 📜 while문
+  - 💻 [01-20 while문](./workspace-ins/ch01/ex01-20.js)
+  - 💻 [01-20-02 while문을 사용하여 홀수/짝수 합계 구하기](./workspace-ins/ch01/ex01-20-02.js)
+  - 💻 [01-20-03 while문을 사용하여 쌀알 모으기](./workspace-ins/ch01/ex01-20-03.js)
+  - 💻 [01-20-04 do-while문](./workspace-ins/ch01/ex01-20-04.js)
+* 📜 for문
+  - 💻 [01-21 for문](./workspace-ins/ch01/ex01-21.js)
+  - 💻 [01-21-02 for문을 사용하여 별찍기](./workspace-ins/ch01/ex01-21-02.js)
+
+##### boj
+* 문제 풀이
+  - 💻 두 수 비교하기 (if문으로 수정) - [boj/02/01.js](./workspace-ins/boj/02/01.js)
+
 
 # 참고 사이트
 ## 자바스크립트 학습
