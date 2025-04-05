@@ -42,11 +42,29 @@ KOI 전자에서는 건강에 좋고 맛있는 훈제오리구이 요리를 간�
 const fs = require("fs");
 const fileData = fs.readFileSync(0).toString().trim().split("\n");
 // console.log(fileData);
-
 const now = fileData[0].split(" ");
 
 const h = parseInt(now[0]); // 17
 const m = parseInt(now[1]); // 40
 
 const cookingTime = parseInt(fileData[1]); // 80
-console.log(h, m, cookingTime);
+// console.log(h, m, cookingTime);
+
+// 5번 예제 참고하여 제출
+if (h >= 0 && h <= 23 && m >= 0 && m <= 59) {
+  // 총 분으로 변환하여 계산
+  let totalMinutes = h * 60 + m;
+  totalMinutes += cookingTime;
+
+  // 시간과 분으로 다시 변환
+  let newH = Math.floor(totalMinutes / 60);
+  const newM = totalMinutes % 60;
+
+  if (newH >= 24) {
+    newH = newH % 24;
+  }
+
+  console.log(newH, newM);
+} else {
+  console.log("잘못된 입력");
+}

@@ -40,9 +40,49 @@
 22 55
 */
 
-const fs = require('fs');
-const fileData = fs.readFileSync(0).toString().trim().split(' ');
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split(" ");
 // console.log(fileData);
 
 const h = parseInt(fileData[0]);
 const m = parseInt(fileData[1]);
+
+// claude 코드, 개선안
+// 입력값 검증
+if (h >= 0 && h <= 23 && m >= 0 && m <= 59) {
+  // 총 분으로 변환하여 계산
+  let totalMinutes = h * 60 + m - 45;
+
+  // 음수인 경우 하루(24시간 = 1440분)를 더함
+  if (totalMinutes < 0) {
+    totalMinutes += 24 * 60;
+  }
+
+  // 시간과 분으로 다시 변환
+  const newH = Math.floor(totalMinutes / 60);
+  const newM = totalMinutes % 60;
+
+  console.log(newH, newM);
+} else {
+  console.log("잘못된 입력");
+}
+
+// 개인 코드, 정답
+// let newH = 0;
+// let newM = 0;
+
+// if ((h >= 0, h <= 23)) {
+//   newH = h;
+//   newM = m - 45;
+//   if (m - 45 < 0) {
+//     newH = h - 1;
+//     newM = m + 60 - 45;
+//     if (newH < 0) {
+//       newH = 23;
+//     }
+//   }
+// } else {
+//   console.log("잘못된 입력");
+// }
+
+// console.log(newH, newM);

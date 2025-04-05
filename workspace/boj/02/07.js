@@ -38,3 +38,56 @@
 600
 */
 
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split(" ");
+// console.log(fileData);
+
+const dice1 = parseInt(fileData[0]);
+const dice2 = parseInt(fileData[1]);
+const dice3 = parseInt(fileData[2]);
+
+let price = 0;
+if (dice1 === dice2 && dice2 === dice3) {
+  price = 10000 + dice1 * 1000;
+} else if (dice1 === dice2 || dice1 === dice3) {
+  price = 1000 + dice1 * 100;
+} else if (dice2 === dice3) {
+  price = 1000 + dice2 * 100;
+} else {
+  price = Math.max(dice1, dice2, dice3) * 100;
+}
+console.log(price);
+
+// claude 수정 코드
+
+// 개인 코드, 오답
+// let price = 0;
+// if (dice1 === dice2 && dice2 === dice3) {
+//   price = 10000 + dice1 * 1000;
+//   console.log(price);
+// }
+// switch (dice1) {
+//   case dice2:
+//   case dice3:
+//     price = 1000 + dice1 * 100;
+//     console.log(price);
+//     break;
+// }
+// switch (dice2) {
+//   case dice1:
+//   case dice3:
+//     price = 1000 + dice2 * 100;
+//     console.log(price);
+//     break;
+// }
+// switch (dice3) {
+//   case dice1:
+//   case dice2:
+//     price = 1000 + dice3 * 100;
+//     console.log(price);
+//     break;
+// }
+// if (dice1 !== dice2 && dice2 !== dice3 && dice3 !== dice1) {
+//   price = Math.max(dice1, dice2, dice3) * 100;
+//   console.log(price);
+// }
