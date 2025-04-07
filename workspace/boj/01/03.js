@@ -19,7 +19,7 @@
 1
 */
 
-
+/*
 const fs = require("fs");
 const fileData = fs.readFileSync(0).toString().trim().split(" ");
 // console.log(fileData);
@@ -27,3 +27,24 @@ const a = parseInt(fileData[0]);
 const b = parseInt(fileData[1]);
 
 console.log(a - b);
+*/
+
+function getData() {
+  const fs = require("fs");
+  const fileData = fs.readFileSync(0).toString().trim().split(" ");
+  // console.log(fileData);
+
+  const result = new Object();
+  // 객체로 여러 값을 한 번에 반환
+  result.a = parseInt(fileData[0]);
+  result.b = parseInt(fileData[1]);
+
+  return result;
+}
+
+function main() {
+  const data = getData();
+
+  console.log(data.a - data.b);
+}
+main();
