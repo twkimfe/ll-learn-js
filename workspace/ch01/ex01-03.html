@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>js-파싱 예제</title>
+
+    <script>
+      console.log("Hello JS -1");
+
+      // html코드 파싱이 완료된 후에 발생
+      window.addEventListener("load", function () {
+        // 버튼에 click event 추가
+        const btn = document.querySelector("button");
+        btn.addEventListener("click", function () {
+          console.log("버튼 클릭! - 2");
+        });
+      });
+    </script>
+
+    <script src="ex01-03.js"></script>
+  </head>
+  <body>
+    <h1>어서와, 자바스크립트는 좀 익숙해졌지? - 3</h1>
+    <button>클릭</button><br /><br />
+    <img
+      src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2F4vaba%2FbtscKmQxvUn%2FZMtFGMF7Knbvac7MDCGKDk%2Fimg.png"
+      alt="어서와 짤 이승철 만화"
+    />
+    <script>
+      console.log("hello JS - 4");
+
+      // 버튼에 click event 추가
+      const btn = document.querySelector("button");
+      btn.addEventListener("click", function () {
+        console.log("버튼 클릭! - 1");
+      });
+    </script>
+  </body>
+</html>
