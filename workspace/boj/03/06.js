@@ -51,3 +51,51 @@ Python을 사용하고 있다면, input 대신 sys.stdin.readline을 사용할 �
 2000
 */
 
+/*
+ai 제공 코드
+const fs = require("fs");
+const fileData = fs.readFileSync("/dev/stdin").toString().trim().split("\n");
+
+const t = parseInt(fileData[0]);
+let answer = "";
+
+for (i = 1; i <= t; i++) {
+  const [a, b] = fileData[i].split(" ").map(Number);
+  answer += a + b + "\n";
+}
+console.log(answer.trim());
+*/
+
+/*
+// 개인 정답, 오답 후 ai 수정, 시간 초과
+
+let sum = 0;
+for (i = 1; i <= t; i++) {
+  const inputNum = fileData[i].split(" ").map(Number);
+  const a = Number(inputNum[0]);// 이미 .map()에서 number로 변환하여 굳이 Number()로 다시 변환 불필요
+  const b = Number(inputNum[1]);
+
+  sum = a + b;
+  console.log(sum);
+}
+*/
+
+//ai 수정 코드
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
+
+// 개인 정답
+const t = parseInt(fileData[0]);
+
+let result = ""; // 결과를 저장할 문자열
+for (i = 1; i <= t; i++) {
+  const inputNum = fileData[i].split(" ").map(Number);
+  const a = Number(inputNum[0]);
+  const b = Number(inputNum[1]);
+
+  sum = a + b;
+  result += sum + "\n"; // console.log 대신 문자열에 추가
+}
+
+// 마지막에 한 번만 출력
+console.log(result.trim());

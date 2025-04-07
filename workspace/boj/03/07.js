@@ -29,3 +29,21 @@ Case #4: 17
 Case #5: 7
 */
 
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
+
+const t = parseInt(fileData[0]);
+
+let result = ""; // 결과를 저장할 문자열
+for (i = 1; i <= t; i++) {
+  const inputNum = fileData[i].split(" ").map(Number);
+  const a = Number(inputNum[0]);
+  const b = Number(inputNum[1]);
+  sum = a + b;
+
+  text = `Case #${i}: ` + sum + "\n";
+  result += text; // console.log 대신 문자열에 추가
+}
+
+// 마지막에 한 번만 출력
+console.log(result.trim());

@@ -136,3 +136,45 @@ No
 No
 */
 
+//오답
+/*
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split(" ");
+// console.log(fileData);
+
+const x = parseInt(fileData[0]);
+const n = parseInt(fileData[1]);
+
+const item = fileData[2].split(" ");
+const a = Number(item[0]);
+const b = Number(item[1]);
+for (i = 1; i <= n; i++) {
+  totalPrice = a * b;
+  totalPrice += totalPrice;
+}
+
+if (x !== totalPrice) {
+  console.log("Yes");
+} else console.log("No");
+*/
+
+// ai 수정 정답
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
+// console.log(fileData);
+
+const x = parseInt(fileData[0]);
+const n = parseInt(fileData[1]);
+
+let totalPrice = 0;
+for (i = 1; i <= n; i++) {
+  const item = fileData[i + 1].split(" ").map(Number);
+  const a = Number(item[0]);
+  const b = Number(item[1]);
+  totalPrice += a * b;
+  // console.log(item);
+}
+
+if (x === totalPrice) {
+  console.log("Yes");
+} else console.log("No");

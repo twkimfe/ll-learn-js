@@ -37,8 +37,8 @@ const t = parseInt(fileData[0]);
 // console.log(t);
 
 for (let i = 1; i <= t; i++) {
-  const data = fileData[i].splie(" ");
-  const a = data[0];
-  const b = data[1];
+  const data = fileData[i].split(" ");
+  const a = Number(data[0]);
+  const b = Number(data[1]);
   console.log(a + b);
 }

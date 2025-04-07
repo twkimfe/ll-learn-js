@@ -48,3 +48,41 @@ long int
 long long long long long int
 */
 
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split(" ");
+
+const n = parseInt(fileData[0]);
+// ai 수정 코드
+if (n % 4 === 0) {
+  const repeatTime = n / 4;
+  let stringText = "";
+
+  if (repeatTime >= 1) {
+    stringText = "long";
+  }
+
+  for (i = 2; i <= repeatTime; i++) {
+    stringText += " long"; // 해당 문구는 첫 'long'문구의 오른쪽에 추가됨
+  }
+  let result = stringText + " int";
+  console.log(result);
+} else {
+  console.log("잘못된 입력값입니다.");
+}
+
+// 개인 코드, 오답
+/*
+if (n % 4 === 0) {
+  const repeatTime = n / 4;
+  let stringText = "";
+
+  for (i = 1; i <= repeatTime; i++) {
+    stringText = "long";
+    stringText += " long";
+    let result = stringText + " int";
+    console.log(result);
+  }
+} else {
+  console.log("잘못된 입력값입니다.");
+}
+  */
