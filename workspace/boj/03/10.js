@@ -24,3 +24,40 @@
 *****
 */
 
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
+
+const n = parseInt(fileData[0]);
+
+// ai 수정 코드
+let result = "";
+for (i = 1; i <= n; i++) {
+  let line = "";
+  // n-i개 공백 추가
+  for (j = 1; j <= n - i; j++) {
+    line += " ";
+  }
+  // i개 별 추가
+  for (j = 1; j <= i; j++) {
+    line += "*";
+  }
+
+  result += line + "\n";
+}
+console.log(result);
+
+/* 개인 코드, 오답
+let star = "";
+let space = " ";
+let result = "";
+
+for (i = 1; i <= n; i++) {
+  space += " ";
+  for (i = 1; i <= n; i++) {
+    star += "*";
+  }
+
+  result += space + star + "\n";
+}
+console.log(result);
+*/

@@ -23,3 +23,31 @@
 *****
 */
 
+// ai 수정 코드
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
+
+const n = parseInt(fileData[0]);
+let star = "";
+let result = "";
+
+for (i = 1; i <= n; i++) {
+  star += "*";
+  result += star + "\n";
+}
+console.log(result);
+
+// 개인 코드, 오답
+/*
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
+
+const n = parseInt(fileData[0]);
+let result = "";
+for (i = 1; n <= i; i++) {
+  star = "*";
+  result += star;
+}
+
+console.log(result);
+*/
