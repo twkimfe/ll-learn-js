@@ -34,6 +34,8 @@
 181720
 */
 
+// 개인 코드 오답
+/*
 const fs = require("fs");
 const inputData = fs.readFileSync(0).toString().trim().split("\n");
 // console.log(inputData);
@@ -48,3 +50,58 @@ console.log(part3);
 console.log(part4);
 console.log(part5);
 console.log(sum);
+*/
+
+/**
+ * 표준 입력장치(콘솔)에서 두 줄로 입력된 줄당 한 건의 데이터를 읽어서 숫자로 변환한 후, 객체에 a, b 속성으로 저장하여 변환한다.
+ * @returns {Object} a, b속성에 입력값이 저장된 객체
+ */
+function getData() {
+  const fs = require("fs");
+  const fileData = fs.readFileSync(0).toString().trim().split("\n");
+  // console.log(fileData);
+
+  const result = new Object();
+  // 객체로 여러 값을 한 번에 반환
+  result.a = isNaN(fileData[0]) ? fileData[0] : parseInt(fileData[0]);
+  result.b = isNaN(fileData[1]) ? fileData[1] : parseInt(fileData[1]);
+  return result;
+}
+
+function main() {
+  const data = getData();
+  //data에서 값을 꺼내서 문제 해결하는 코드 작성
+  /*
+  const n1 = data.a; // 472
+  const n2 = data.b; // 385
+*/
+
+  /* 방법1
+  const n3 = n1 * (n2 % 10); // 472 * 5
+  const n4 = n1 * (parseInt(n2 / 10) % 10); // 472 * (38 % 10) = 472 * 8
+  const n5 = n1 * parseInt(n2 / 100); // 472 * (385 / 100) = 472 * 3
+*/
+
+  /* 방법2
+  const n5 = n1 * parseInt(n2 / 100); // 472 * (385 / 100) = 472 * 3
+  const n4 = n1 * (parseInt(n2 - n5 * 100) / 10); // 472 * (385 - 300)/ 10 = 472 * 8
+  const n3 = n1 * (n2 % 10); // 472 * 5
+*/
+
+  /* 방법3 - 문자열을 바꾸는 방법
+   */
+  const n1 = data.a; // 472
+  const n2 = String(data.b); // '385'
+
+  const n3 = n1 * n2[0];
+  const n4 = n1 * n2[1];
+  const n5 = n1 * n2[2];
+
+  const n6 = n3 + n4 * 10 + n5 * 100;
+
+  console.log(n3);
+  console.log(n4);
+  console.log(n5);
+  console.log(n6);
+}
+main();

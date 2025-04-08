@@ -27,6 +27,7 @@
 0
 */
 
+/* 개인코드
 const fs = require("fs");
 const fileData = fs.readFileSync(0).toString().trim().split(" ");
 // console.log(fileData);
@@ -36,3 +37,44 @@ const year = parseInt(fileData[0]);
 if (year % 4 === 0 && (year % 100 !== 0 || year % 400 === 0)) {
   console.log(1);
 } else console.log(0);
+*/
+
+// 강사 코드
+
+/**
+ * 표준 입력장치(콘솔)에서 한 줄로 입력된 두 건의 데이터를 읽어서 숫자로 변환한 후, 객체에 a, b 속성으로 저장하여 변환한다.
+ * @returns {Object} a, b속성에 입력값이 저장된 객체
+ */
+function getData() {
+  const fs = require("fs");
+  const fileData = fs.readFileSync(0).toString().trim().split(" ");
+  // console.log(fileData);
+
+  const result = new Object();
+  // 객체로 여러 값을 한 번에 반환
+  result.a = parseInt(fileData[0]);
+  result.b = parseInt(fileData[1]);
+
+  return result;
+}
+
+function main() {
+  const data = getData();
+  //data에서 값을 꺼내서 문제 해결하는 코드 작성
+  console.log(data.a + data.b);
+}
+main();
+
+function main() {
+  const data = getData();
+
+  let result = 0; // 초기값은 윤년이 아님
+
+  // 윤년이 되는 경우
+  //4의 배수 && (100의 배수가 아니거나 400의 배수)
+  if (data % 4 === 0 && (data % 100 !== 0 || data % 400 === 0)) {
+    result = 1;
+  }
+  console.log(result);
+}
+main();

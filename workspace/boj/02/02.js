@@ -29,3 +29,44 @@ else if (score >= 70 && score <= 79) console.log("C");
 else if (score >= 80 && score <= 89) console.log("B");
 else if (score >= 90 && score <= 100) console.log("A");
 else console.log("F");
+
+//강사 코드
+
+/**
+ * 표준 입력장치(콘솔)에서 한 줄로 입력된 두 건의 데이터를 읽어서 숫자로 변환한 후, 객체에 a, b 속성으로 저장하여 변환한다.
+ * @returns {Object} a, b속성에 입력값이 저장된 객체
+ */
+function getData() {
+  const fs = require("fs");
+  const fileData = fs.readFileSync(0).toString().trim().split(" ");
+  // console.log(fileData);
+
+  const result = new Object();
+  // 객체로 여러 값을 한 번에 반환
+  result.a = parseInt(fileData[0]);
+  result.b = parseInt(fileData[1]);
+
+  return result;
+}
+
+/*
+function main() {
+  const data = getData();
+
+  if (data >= 90) {
+    console.log('A');
+  } else if (data >= 80) {
+    console.log('B');
+  }
+  else if (data >= 70) {
+    console.log('C');
+  }
+  else if (data >= 60) {
+    console.log('D');
+  }
+  else {
+    console.log('F');
+  }
+}
+main();
+*/
