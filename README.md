@@ -222,7 +222,7 @@
   - 💻 [01-21-03 for문을 이용해서 구구단 작성](./workspace-ins/ch01/ex01-21-03.js)
   - 💻 [01-22 break, continue](./workspace-ins/ch01/ex01-22.js)
 * 📜 참조 타입(Object, 객체)
-  - 💻 [01-23 new Object() - 생성자 함수로 객체 생성](./workspace-ins/ch01/ex01-23.js)
+  - 💻 [01-23-01 new Object() - 생성자 함수로 객체 생성](./workspace-ins/ch01/ex01-23.js)
   - 💻 [01-23-02 국어, 영어, 수학 총점과 평균 출력](./workspace-ins/ch01/ex01-23-02.js)
 
 ##### 오후(3시간)
@@ -284,8 +284,10 @@
 * boj 문제 풀이
   - 💻 알람 시계 - [boj/02/05.js](./workspace-ins/boj/02/05.js)
 * 📜 참조 타입(Object, 객체)
-  - 💻 ex01-23.js
-  - 💻 ex01-24.js
+  - 💻 [01-23 new Object() - 생성자 함수로 객체 생성](./workspace-ins/ch01/ex01-23.js)
+  - 💻 [01-24 JSON 표기법 - 리터럴 방식으로 객체 생성](./workspace-ins/ch01/ex01-24.js)
+  - 💻 [01-24-02 총점과 평균을 메서드로 작성](./workspace-ins/ch01/ex01-24-02.js)
+
 
 # 참고 사이트
 ## 자바스크립트 학습
