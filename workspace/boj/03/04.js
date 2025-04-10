@@ -158,7 +158,7 @@ if (x !== totalPrice) {
 } else console.log("No");
 */
 
-// ai 수정 정답
+/* ai 수정 정답
 const fs = require("fs");
 const fileData = fs.readFileSync(0).toString().trim().split("\n");
 // console.log(fileData);
@@ -178,3 +178,34 @@ for (i = 1; i <= n; i++) {
 if (x === totalPrice) {
   console.log("Yes");
 } else console.log("No");
+*/
+
+/**
+ * 표준 입력장치(콘솔)에서 여러줄로 입력된 줄당 여러 건의 데이터를 읽어서 숫자로 변환한 후
+ * 배열로 저장하여 반환한다.
+ * @returns {[]} 2차원 배열
+ */
+function getData() {
+  const fs = require("fs");
+  return fs
+    .readFileSync(0)
+    .toString()
+    .trim()
+    .split("\n")
+    .map((row) =>
+      row.split(" ").map((val) => (isNaN(val) ? val : parseInt(val)))
+    );
+}
+
+function main() {
+  const data = getData();
+  // data에서 값을 꺼내서 문제 해결하는 코드 작성
+  const totalPrice = data[0][0];
+  let sum = 0;
+  for (let i = 2; i < data.length; i++) {
+    const rowData = data[i];
+    sum += rowData[0] * rowData[1];
+  }
+  console.log(totalPrice === sum ? "Yes" : "No");
+}
+main();

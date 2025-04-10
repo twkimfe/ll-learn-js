@@ -80,7 +80,7 @@ for (i = 1; i <= t; i++) {
 }
 */
 
-//ai 수정 코드
+/*ai 수정 코드
 const fs = require("fs");
 const fileData = fs.readFileSync(0).toString().trim().split("\n");
 
@@ -99,3 +99,44 @@ for (i = 1; i <= t; i++) {
 
 // 마지막에 한 번만 출력
 console.log(result.trim());
+*/
+// 강사 코드
+
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
+
+let t = parseInt(fileData[0]);
+
+let result = "";
+for (let i = 1; i < t; i++) {
+  const data = fileData[i].split(" ");
+  const a = parseInt(data[0]);
+  const b = parseInt(data[1]);
+  result += a + b + "\n";
+}
+console.log(result.trim());
+
+/*
+console.time("Multi logs");
+for (let i = 0; i < 100_0000; i++) {
+  console.log("line-" + i);
+}
+console.timeEnd("Multi logs");
+*/
+
+/*
+console.time("single Logs"); // 시간 측정 시작
+let sum = "";
+for (let i = 0; i < 1000000; i++) {
+  sum += "Line-" + i + "\n";
+}
+console.log(sum);
+console.timeEnd("single Logs"); // 시간을 측정 끝
+*/
+/*
+console.time("single Logs"); // 시간 측정 시작
+for (let i = 0; i < 1000000; i++) {
+  console.log("Line-" + i);
+}
+console.timeEnd("single Logs"); // 시간을 측정 끝
+*/

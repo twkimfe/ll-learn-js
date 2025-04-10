@@ -11,15 +11,12 @@
  */
 function getData() {
   const fs = require("fs");
-  // '23 48\n25\n'
   const fileData = fs.readFileSync(0).toString();
-  // ['23 48', '25']
   const arr = fileData.trim().split("\n");
-
   const result = []; // 2차원 배열 리턴
-  for (let i = 0; i < arr.length; i++) {
-    const row = arr[i]; // '23 48', '25'
-    const rowArr = row.split(" "); // ['23', '48'], ['25']
+
+  for (let row of arr) {
+    const rowArr = row.split(" ");
     for (let k = 0; k < rowArr.length; k++) {
       rowArr[k] = isNaN(rowArr[k]) ? rowArr[k] : parseInt(rowArr[k]);
     }
@@ -30,7 +27,6 @@ function getData() {
 
 function main() {
   const data = getData();
-  //data에서 값을 꺼내서 문제 해결하는 코드 작성
   console.log(data);
 }
 main();

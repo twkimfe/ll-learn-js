@@ -38,6 +38,7 @@
 600
 */
 
+/* ai 수정 코드
 const fs = require("fs");
 const fileData = fs.readFileSync(0).toString().trim().split(" ");
 // console.log(fileData);
@@ -57,8 +58,7 @@ if (dice1 === dice2 && dice2 === dice3) {
   price = Math.max(dice1, dice2, dice3) * 100;
 }
 console.log(price);
-
-// claude 수정 코드
+*/
 
 // 개인 코드, 오답
 // let price = 0;
@@ -91,3 +91,50 @@ console.log(price);
 //   price = Math.max(dice1, dice2, dice3) * 100;
 //   console.log(price);
 // }
+
+/**
+ * 표준 입력장치(콘솔)에서 n 줄로 입력된 줄당 n 건의 데이터를 읽어서 숫자로 변환한 후 배열로 저장하여 반환한다.
+ * @returns {[]} 2차원 배열
+ */
+function getData() {
+  const fs = require("fs");
+  // '23 48\n25\n'
+  const fileData = fs.readFileSync(0).toString();
+  // ['23 48', '25']
+  const arr = fileData.trim().split("\n");
+
+  const result = []; // 2차원 배열 리턴
+
+  for (let row of arr) {
+    // '23 48', '25'
+    const rowArr = row.split(" "); // ['23', '48'], ['25']
+    for (let k = 0; k < rowArr.length; k++) {
+      rowArr[k] = isNaN(rowArr[k]) ? rowArr[k] : parseInt(rowArr[k]);
+    }
+    result.push(rowArr);
+  }
+  return result;
+}
+
+function main() {
+  const data = getData();
+  //data에서 값을 꺼내서 문제 해결하는 코드 작성
+
+  const n1 = data[0][0];
+  const n2 = data[0][1];
+  const n3 = data[0][2];
+
+  let point = 0;
+
+  if (n1 === n2 && n2 === n3) {
+    point = 10000 + n1 * 1000;
+  } else if (n1 === n2 || n2 === n3) {
+    point = 1000 + n2 * 100;
+  } else if (n1 === n3) {
+    point = 1000 + n1 * 100;
+  } else {
+    point = Math.max(n1, n2, n3) * 100;
+  }
+  console.log(point);
+}
+main();
