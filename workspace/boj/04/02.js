@@ -24,3 +24,58 @@ X보다 작은 수를 입력받은 순서대로 공백으로 구분해 출력한
 1 4 2 3
 */
 
+/* 개인 코드, 에러
+function main() {
+  const data = getData();
+  // data에서 값을 꺼내서 문제 해결하는 코드 작성
+  const n = data[0][0];
+  const x = data[0][1];
+  const a = data[1][n];
+
+  let result = "";
+  for (let i = 0; i < n.length; i++) {
+    if (a < x) {
+      result += a + " ";
+    } else {
+      console.log("작은 값이 없습니다.");
+    }
+  }
+  console.log(result);
+  console.log(x);
+}
+main();
+*/
+
+// ai 검토 후 수정
+function main() {
+  const data = getData();
+  // data에서 값을 꺼내서 문제 해결하는 코드 작성
+  const x = data[0][1];
+  const a = data[1];
+
+  let result = "";
+  for (let i = 0; i < a.length; i++) {
+    if (a[i] < x) {
+      result += a[i] + " ";
+    }
+  }
+  console.log(result.trim());
+}
+main();
+
+/**
+ * 표준 입력장치(콘솔)에서 여러줄로 입력된 줄당 여러 건의 데이터를 읽어서 숫자로 변환한 후
+ * 배열로 저장하여 반환한다.
+ * @returns {[]} 2차원 배열
+ */
+function getData() {
+  const fs = require("fs");
+  return fs
+    .readFileSync(0)
+    .toString()
+    .trim()
+    .split("\n")
+    .map((row) =>
+      row.split(" ").map((val) => (isNaN(val) ? val : parseInt(val)))
+    );
+}

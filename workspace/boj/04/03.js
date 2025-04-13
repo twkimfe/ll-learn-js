@@ -1,4 +1,5 @@
 /*
+https://www.acmicpc.net/submit/10818
 제목: 최소, 최대
 설명: 최솟값과 최댓값을 찾는 문제
 제출: 
@@ -23,3 +24,47 @@ N개의 정수가 주어진다.
 7 35
 */
 
+/**
+ * 표준 입력장치(콘솔)에서 여러줄로 입력된 줄당 여러 건의 데이터를 읽어서 숫자로 변환한 후
+ * 배열로 저장하여 반환한다.
+ * @returns {[]} 2차원 배열
+ */
+function getData() {
+  const fs = require("fs");
+  return fs
+    .readFileSync(0)
+    .toString()
+    .trim()
+    .split("\n")
+    .map((row) =>
+      row.split(" ").map((val) => (isNaN(val) ? val : parseInt(val)))
+    );
+}
+
+function main() {
+  const data = getData();
+  // data에서 값을 꺼내서 문제 해결하는 코드 작성
+  const num = data[1];
+  let minNum = num[0];
+  let maxNum = num[0];
+
+  // 방법1 남은 요소와 비교하여 업데이트
+  for (let i = 1; i < num.length; i++) {
+    if (num[i] < minNum) {
+      minNum = num[i];
+    }
+    if (num[i] > maxNum) {
+      maxNum = num[i];
+    }
+  }
+
+  /* 방법2
+   let minNum = 0;
+   let maxNum = 0;
+  minNum = Math.min(...num);
+  maxNum = Math.max(...num);
+*/
+
+  console.log(minNum, maxNum);
+}
+main();
