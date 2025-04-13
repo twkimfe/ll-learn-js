@@ -64,6 +64,30 @@ function getData() {
 
 function main() {
   const data = getData();
+  const n = data[0][0];
+  const m = data[0][1];
+  const result = new Array(n).fill(0);
+
+  for (let i = 1; i < data.length; i++) {
+    const rowArr = data[i];
+    const x = rowArr[0];
+    const y = rowArr[1];
+    const z = rowArr[2];
+
+    for (let k = x; k <= y; k++) {
+      result[k - 1] = z;
+    }
+  }
+
+  const strResult = result.join(" ");
+  console.log(strResult);
+}
+
+main();
+
+/* 강사 코드
+function main() {
+  const data = getData();
   // data에서 값을 꺼내서 문제 해결하는 코드 작성
   // console.log(data);
   const n = data[0][0];
@@ -87,6 +111,7 @@ function main() {
     .split(" ")
     .map((val) => (isNaN(val) ? val : parseInt(val)));
   console.log(reArray);
-  */
+
 }
 main();
+  */

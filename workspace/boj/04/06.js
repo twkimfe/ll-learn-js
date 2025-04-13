@@ -21,6 +21,12 @@
 
 예제 입력 1 
 5 4
+1 2 // 2 1 3 4 5
+3 4 // 2 1 4 3 5
+1 4 // 3 1 4 2 5
+2 2 // 3 1 4 2 5
+
+5 4
 1 2
 3 4
 1 4
@@ -28,5 +34,80 @@
 
 예제 출력 1 
 3 1 4 2 5
+
+[예제 1]
+입력:
+7 3
+2 5
+4 7
+1 3
+출력:
+3 5 1 7 2 6 4
+
+[예제 2]
+입력:
+4 2
+1 4
+2 3
+출력:
+4 3 2 1
+
+[예제 3]
+입력:
+6 5
+1 6
+2 4
+3 5
+2 5
+1 4
+출력:
+2 3 5 6 4 1
 */
 
+/**
+ * 표준 입력장치(콘솔)에서 여러줄로 입력된 줄당 여러 건의 데이터를 읽어서 숫자로 변환한 후
+ * 배열로 저장하여 반환한다.
+ * @returns {[]} 2차원 배열
+ */
+function getData() {
+  const fs = require("fs");
+  return fs
+    .readFileSync(0)
+    .toString()
+    .trim()
+    .split("\n")
+    .map((row) =>
+      row.split(" ").map((val) => (isNaN(val) ? val : parseInt(val)))
+    );
+}
+
+// 개인 코드, 제출 오답
+function main() {
+  const data = getData();
+  const n = data[0][0];
+  const m = data[0][1];
+
+  let firstArr = [];
+
+  for (let i = 1; i <= n; i++) {
+    firstArr.push(i);
+  }
+  const result = firstArr.map((val) => (isNaN(val) ? val : parseInt(val)));
+  //  console.log(result);
+
+  for (let i = 1; i <= m; i++) {
+    const rowArr = data[i];
+    const a = rowArr[0];
+    const b = rowArr[1];
+    let c = result[a - 1];
+    let d = result[b - 1];
+    result[b - 1] = c;
+    result[a - 1] = d;
+  }
+  /* 오답 부분
+  console.log(result);
+  */
+    console.log(result.join(" "));
+}
+
+main();
