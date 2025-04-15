@@ -34,7 +34,10 @@
             const firstLi = targetList[i].firstElementChild;
 
             //해당 노드 삭제
-            firstLi?.remove();
+            // firstLi?.remove(); //옵셔널 체이닝으로 구현
+
+            //node 삭제
+            firstLi?.parentNode.removeChild(firstLi);
 
             // console.log(targetList[i].innerHTMl);
           }
@@ -53,7 +56,10 @@
         console.log(newLi.childNodes, newLi.firstChild, newLi.lastChild);
         newLi.appendChild(newTxt);
         console.log(newLi.childNodes, newLi.firstChild, newLi.lastChild);
-        shoppingList.appendChild(newLi);
+        // shoppingList.appendChild(newLi);
+
+        // node 삽입
+        shoppingList.insertBefore(newLi, shoppingList.firstChild);
 
         console.log("우유 추가 완료");
 
