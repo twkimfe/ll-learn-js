@@ -81,3 +81,60 @@ X대학 M교수님은 프로그래밍 수업을 맡고 있다.
 8
 */
 
+const { log } = require("console");
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
+// console.log(fileData);
+
+const taskArr = new Array(31).fill(false);
+
+/*
+//ai 수정, for문
+  for (let i = 0; i <fileData.length; i++) {
+    const studentNumber = parseInt(fileData[i]);
+    taskArr[studentNumber] = true;
+}
+
+const notSubmitted = [];
+  for (let i = 1; i <=30; i++) {
+    if (!taskArr[i]) {
+  notSubmitted.push(i)
+}
+  }
+*/
+
+//ai 수정, for of문
+for (const student of fileData) {
+  const studentNumber = parseInt(student);
+  taskArr[studentNumber] = true;
+}
+
+const notSubmitted = [];
+for (let i = 1; i <= 30; i++) {
+  if (!taskArr[i]) {
+    notSubmitted.push(i);
+  }
+}
+
+console.log(notSubmitted[0]);
+console.log(notSubmitted[1]);
+
+/* 개인 답안, 오답
+const { log } = require("console");
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
+
+let submitTask = fileData;
+const taskArr = new Array(30).fill("false");
+
+for (var elem of submitTask) {
+  for (let i = 0; i < fileData.length; i++) {
+    if (elem === fileData[i]) {
+      taskArr[i] = "true";
+    } else {
+      taskArr[i] = submitTask[i];
+    }
+  }
+}
+console.log(taskArr);
+*/
