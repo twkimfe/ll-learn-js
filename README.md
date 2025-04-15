@@ -359,6 +359,7 @@
   - 💻 [05-01-03 class 명으로 요소 찾기 - getElementsByClassName()](./workspace-ins/ch05/ex05-01-03.js)
 * 📜 노드 찾기 5 - querySelector()
   - 💻 [05-01-04 CSS 셀렉터로 요소 찾기 = querySelector()](./workspace-ins/ch05/ex05-01-04.js)
+  - 💻 [05-02 Counter](./workspace-ins/ch05/ex05-02.html)
 
 
 # 참고 사이트
