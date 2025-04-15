@@ -49,6 +49,7 @@
         console.log("우유 추가 예정");
         const shoppingList = document.getElementById("purchases");
 
+        /*
         // 솔루션 1: createElement 사용
         const newLi = document.createElement("li"); // <li>
         const newTxt = document.createTextNode("우유"); // 우유
@@ -62,15 +63,14 @@
         shoppingList.insertBefore(newLi, shoppingList.firstChild);
 
         console.log("우유 추가 완료");
+        */
 
-        /*
         // 솔루션 2: innerHTML
         // innerHTML: 요소노드의 내부 HTML 코드값을 문자열로 가지고 있는 속성(자신 제외)
         console.log(shoppingList.innerHTML);
         // outerHTML: 요소노드의 내부 HTML 코드값을 문자열로 가지고 있는 속성(자신 포함)
         console.log(shoppingList.outerHTML);
         shoppingList.innerHTML += "<li>우유</li>";
-        */
       }
     </script>
   </head>
