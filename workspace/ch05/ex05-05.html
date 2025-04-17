@@ -16,26 +16,10 @@
             <li>
               <h2>쇼핑 목록</h2>
               <div class="todoinput">
-                <input type="text" autofocus />
-                <button type="button">추가</button>
+                <input type="text" autofocus onkeyup="handleKeyup(event)" />
+                <button type="button" onclick="handleAdd()">추가</button>
               </div>
-              <ul class="todolist">
-                <li>
-                  <span>1</span>
-                  <span><s>샘플1</s></span>
-                  <button type="button">삭제</button>
-                </li>
-                <li>
-                  <span>2</span>
-                  <span>샘플2</span>
-                  <button type="button">삭제</button>
-                </li>
-                <li>
-                  <span>3</span>
-                  <span>샘플3</span>
-                  <button type="button">삭제</button>
-                </li>
-              </ul>
+              <ul class="todolist"></ul>
             </li>
           </ul>
         </div>
@@ -56,25 +40,112 @@
             <button type="button">삭제</button>
           </li>
         */
+
+        // <li>
+        const liElem = document.createElement("li");
+        // <span>
+        const noElem = document.createElement("span");
+        // <span>
+        const titleElem = document.createElement("span");
+        // <button>
+        const deleteElem = document.createElement("button");
+
+        // 3
+        const noTxt = document.createTextNode(item.no);
+        // sample 3
+        const titleTxt = document.createTextNode(item.title);
+        // delete
+        const deleteTxt = document.createTextNode("삭제");
+
+        // <span>3</span>
+        noElem.appendChild(noTxt);
+        // <span>sample 3</span>
+        titleElem.appendChild(titleTxt);
+        // <button type='button'>삭제</button>
+        deleteElem.setAttribute("type", "button");
+        titleElem.setAttribute("tabindex", 0); // 완료/미완료 처리를 위한 탭 포커싱
+        deleteElem.appendChild(deleteTxt);
+
+        //<li><span>3</span></li>
+        liElem.appendChild(noElem);
+        //<li><span>3</span><span>sample 3</span></li>
+        liElem.appendChild(titleElem);
+        //<li><span>3</span><span>sample 3</span><button type='button'>삭제</button></li>
+        liElem.appendChild(deleteElem);
+
+        //custom 속성
+        //<li data-no='3'>
+        //elem.dataset.no -> 3
+        liElem.dataset.no = item.no;
+
+        deleteElem.addEventListener("click", function (event) {
+          /* no 찾는 방법 1
+          const btn = event.target;
+          const liNode = btn.closest("li");
+          deleteItem(liNode.dataset.no);*/
+          // no 찾는 방법 2
+          //deleteItem(item.no)
+        });
+
+        // 삭제 이벤트 등록
+        deleteElem.setAttribute("onclick", `deleteItem(${item.no})`);
+
+        // 완료/미완료 이벤트 등록
+        titleElem.setAttribute("onclick", `toggleDone(${item.no})`);
+
+        //<li>
+        //<span>3</span>
+        //<span>sample 3</span>
+        //<button type='button'>삭제</button>
+        //</li>
+        return liElem;
       }
 
+      // 추가 버튼 클릭 이벤트 핸들러
+      function handleAdd() {
+        const inputElem = document.querySelector(".todoinput > input");
+        if (inputElem.value.trim() !== "") {
+          addItem(inputElem.value.trim());
+          inputElem.value = "";
+          inputElem.focus();
+        }
+      }
+
+      // 엔터 키 눌렀을 시 처리하는 이벤트 핸들러
+      function handleKeyup(event) {
+        if (event.key === "Enter") handleAdd();
+      }
+
+      // let itemNo = 3;
+
       // 할일 추가
-      function addItem (title) {
-        
+      function addItem(title) {
+        const todoList = document.querySelector(".todolist");
+
+        const item = {
+          //children: 자식노드의 목록(요소노드)
+          no: todoList.children.length + 1,
+          //no: ++itemNo, 사용
+          title,
+          done: false,
+        };
+        const todoLi = getTodoItemElem(item);
+        console.log(todoLi);
+        todoList.appendChild(todoLi);
       }
 
       // 완료/미완료 처리
-      function toggleDone (no) {
-        
+      function toggleDone(no) {
+        console.log(no);
       }
 
       // 할일 삭제
-      function deleteItem (no) {
-        
+      function deleteItem(no) {
+        const targetLi = document.querySelector(
+          `.todolist > li[data-no="${no}"]`
+        );
+        targetLi.remove();
       }
-
-
-      
     </script>
   </body>
 </html>
