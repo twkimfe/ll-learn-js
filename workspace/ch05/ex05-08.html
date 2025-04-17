@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <style>
+      /* CSS 클래스 정의 */
+      .pad100 {
+        padding: 100px;
+      }
+      .size30 {
+        font-size: 30px;
+      }
+      .line-through {
+        text-decoration: line-through; /* 취소선 스타일 */
+      }
+      ul {
+        margin: 10px;
+        border: 1px solid green;
+      }
+      li {
+        border: 1px solid blue;
+      }
+    </style>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const list = document.querySelector("ul");
+        console.log(list.className);
+        console.log(list.classList);
+
+        list.className = "good bye";
+
+        const btn = document.querySelector("button");
+        btn.addEventListener("click", function () {
+          // style 객체는 인라인 스타일만 접근 가능(CSS 파일이나 <style> 태그의 스타일은 접근 안됨)
+          console.log(list.style.fontSize); // style 태그가 있을 때만 .style로 접근이 가능함
+
+          const computedStyle = getComputedStyle(list);
+          console.log(computedStyle.fontSize);
+
+          list.classList = "pad100 size30";
+          console.log(computedStyle.fontSize);
+        });
+
+        for (let item of list.children) {
+          item.addEventListener("click", function (event) {
+            console.log("event.target", event.target);
+            /*
+            if (event.target.classList.contains("line-through")) {
+              event.target.classList.remove("line-through");
+            } else {
+              event.target.classList.add("line-through");
+            } */
+            event.target.classList.toggle("line-through");
+          });
+        }
+      });
+    </script>
+  </head>
+  <body>
+    <h1>DOM - class 속성 접근</h1>
+    <button>class 추가</button>
+    <ul class="hello bye" style="user-select: none">
+      <li>두부</li>
+      <li>계란</li>
+      <li>콩나물</li>
+    </ul>
+  </body>
+</html>

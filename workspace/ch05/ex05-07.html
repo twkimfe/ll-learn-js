@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM</title>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const smile = document.querySelector("span");
+        console.log(smile.style);
+        console.log(smile.style.left, smile.style.top);
+
+        /*
+        // 지정한 함수를 지정한 시간이 흐른 뒤에 실행
+        setTimeout(function () {
+          smile.style.left = "160px";
+          smile.style.top = "22px";
+        }, 2000);
+        */
+
+        document.addEventListener("mousemove", function (event) {
+          const x = event.clientX - smile.clientWidth;
+          const y = event.clientY - smile.clientHeight;
+          /*
+          smile.style.left = x + "px";
+          smile.style.top = y + "px";
+          smile.style.fontSize = x / 5 + "px";
+          */
+          //style로 통채로 지정할 경우 작동하지 않는다
+          //대신 cssText 라는 속성으로 구현해야 한다.
+          smile.style.cssText = `position: fixed;left: ${x}px; top: ${y}px; font-size: ${
+            x / 5
+          }px;`;
+          smile.setAttribute(
+            "style",
+            `position: fixed;left: ${x}px; top: ${y}px; font-size: ${x / 5}px;`
+          );
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>DOM - style 속성 접근</h1>
+    <span style="position: fixed; left: 24px; top: 20px; font-size: 28px"
+      >😆</span
+    >
+  </body>
+</html>

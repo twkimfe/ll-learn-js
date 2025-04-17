@@ -77,21 +77,31 @@
         //<li data-no='3'>
         //elem.dataset.no -> 3
         liElem.dataset.no = item.no;
+        liElem.dataset.done = item.done;
 
+        // 삭제 이벤트 등록1
         deleteElem.addEventListener("click", function (event) {
-          /* no 찾는 방법 1
+          //no 찾는 방법 1
           const btn = event.target;
           const liNode = btn.closest("li");
-          deleteItem(liNode.dataset.no);*/
+          deleteItem(liNode.dataset.no);
           // no 찾는 방법 2
           //deleteItem(item.no)
         });
 
-        // 삭제 이벤트 등록
-        deleteElem.setAttribute("onclick", `deleteItem(${item.no})`);
+        // 삭제 이벤트 등록2
+        // deleteElem.setAttribute("onclick", `deleteItem(${item.no})`);
 
-        // 완료/미완료 이벤트 등록
-        titleElem.setAttribute("onclick", `toggleDone(${item.no})`);
+        // 완료/미완료 이벤트 등록1
+        titleElem.addEventListener("click", function (event) {
+          //no 찾는 방법 1
+          const btn = event.target;
+          const liNode = btn.closest("li");
+          toggleDone(liNode.dataset.no);
+        });
+
+        // 완료/미완료 이벤트 등록2
+        // titleElem.setAttribute("onclick", `toggleDone(${item.no})`);
 
         //<li>
         //<span>3</span>
@@ -137,6 +147,24 @@
       // 완료/미완료 처리
       function toggleDone(no) {
         console.log(no);
+
+        const targetLi = document.querySelector(
+          `.todolist > li[data-no="${no}"]`
+        );
+        const done = targetLi.dataset.done === "true";
+        console.log(typeof done, done);
+        const titleEl = targetLi.querySelector("span:last-of-type");
+        if (done) {
+          // done이 true면 완료-> 미완료로 수정, <span><s>sample3</s></span> -> <span>sample3</span> 수정
+          titleEl.appendChild(titleEl.firstChild.firstChild);
+          titleEl.firstChild.remove();
+        } else {
+          // done이 false 미완료-> 완료로 수정, <span>sample3</span> -> <span><s>sample3</s></span> 수정
+          const sElem = document.createElement("s");
+          sElem.appendChild(titleEl.firstChild);
+          titleEl.appendChild(sElem);
+        }
+        targetLi.dataset.done = !done;
       }
 
       // 할일 삭제
