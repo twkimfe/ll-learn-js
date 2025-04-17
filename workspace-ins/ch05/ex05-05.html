@@ -15,22 +15,24 @@
         <ul>
           <li>
             <h2>쇼핑 목록</h2>
+            <!-- 새로운 할일 입력 폼 -->
             <div class="todoinput">
-              <input type="text" autofocus>
-              <button type="button">추가</button>
+              <input type="text" autofocus onkeyup="handleKeyup(event)">
+              <button type="button" onclick="handleAdd()">추가</button>
             </div>
+            <!-- 할일 목록이 표시되는 영역 -->
             <ul class="todolist">
-              <li>
+              <li data-no="1">
                 <span>1</span>
                 <span><s>샘플1</s></span>
                 <button type="button">삭제</button>
               </li>
-              <li>
+              <li data-no="2">
                 <span>2</span>
-                <span>샘플2</span>
+                <span><s>샘플2</s></span>
                 <button type="button">삭제</button>
               </li>
-              <li>
+              <li data-no="3">
                 <span>3</span>
                 <span>샘플3</span>
                 <button type="button">삭제</button>
@@ -46,32 +48,147 @@
   </div>
 
   <script>
-    // 한건의 Todo 객체를 받아서 DOM 객체로 만들어 반환
+    /**
+     * Todo 아이템 하나를 표현하는 DOM 요소를 생성하는 함수
+     * @param {Object} item - Todo 아이템 객체 {no: number, title: string, done: boolean}
+     * @returns {HTMLElement} 생성된 Todo 아이템의 DOM 요소
+     */
     function getTodoItemElem(item){
-      // { no: 3, title: '라면', done: true } // Todo 객체
+      // item -> { no: 3, title: '라면', done: true } // Todo 객체
       /* DOM 객체
-      <li>
+      return <li>
         <span>3</span>
         <span>샘플3</span>
         <button type="button">삭제</button>
       </li>
       */
+
+      // <li>
+      const liElem = document.createElement('li');
+      // <span>
+      const noElem = document.createElement('span');
+      // <span>
+      const titleElem = document.createElement('span');
+      // <button>
+      const deleteElem = document.createElement('button');
+
+      // 3
+      const noTxt = document.createTextNode(item.no);
+      // 샘플3
+      const titleTxt = document.createTextNode(item.title);
+      // 삭제
+      const deleteTxt = document.createTextNode('삭제');
+
+      // <span>3</span>
+      noElem.appendChild(noTxt);
+      // <span>샘플3</span>
+      titleElem.appendChild(titleTxt);
+      // <button type="button">삭제</button>
+      deleteElem.setAttribute('type', 'button');
+      titleElem.setAttribute('tabindex', 0); // 완료/미완료 처리를 위한 탭 포커싱 ***** 접근성
+      deleteElem.appendChild(deleteTxt);
+
+      // <li><span>3</span></li>
+      liElem.appendChild(noElem);
+      // <li><span>3</span><span>샘플3</span></li>
+      liElem.appendChild(titleElem);
+      // <li><span>3</span><span>샘플3</span><button type="button">삭제</button></li>
+      liElem.appendChild(deleteElem);
+
+      // custom 속성
+      // <li data-no="3">
+      // elem.dataset.no -> 3
+      liElem.dataset.no = item.no;
+
+      // "삭제" 버튼에 클릭 이벤트 핸들러 추가
+      deleteElem.addEventListener('click', function(event){
+        // no를 찾아서~~~ 첫번째 방법
+        // const btn = event.target; // 클릭 이벤트가 발생한 요소(<button>)
+        // // btn의 조상중 셀렉터와 일치하는 가장 가까운 조상
+        // const liNode = btn.closest('li'); // <li data-no="3">
+        // deleteItem(liNode.dataset.no);
+
+        // no를 찾아서~~~ 두번째 방법
+        // TODO 클로저 단원에서 이상한 부분 확인
+        // deleteItem(item.no);
+      });
+
+      // 삭제 이벤트 등록
+      deleteElem.setAttribute('onclick', `deleteItem(${item.no})`);
+
+      // 완료/미완료 처리
+      titleElem.setAttribute('onclick', `toggleDone(${item.no})`);
+      
+      // <li>
+      //   <span>3</span>
+      //   <span>샘플3</span>
+      //   <button type="button">삭제</button>
+      // </li>
+      return liElem;
     }
 
-    // 할일 추가
+    /**
+     * 추가 버튼 클릭 시 실행되는 이벤트 핸들러
+     * 입력창의 값을 가져와 새로운 Todo 아이템을 추가
+     */
+    function handleAdd(){
+      const inputElem = document.querySelector('.todoinput > input');
+      if(inputElem.value.trim() !== '') {
+        addItem(inputElem.value.trim()); // <input>, <select> 같은 폼의 입력 요소에는 value 속성으로 사용자가 입력/선택한 값이 저장되어 있음
+        inputElem.value = '';
+        inputElem.focus();
+      }
+    }
+
+    /**
+     * 입력창에서 키보드 입력 시 실행되는 이벤트 핸들러
+     * Enter 키 입력 시 추가 기능 실행
+     * @param {KeyboardEvent} event - 키보드 이벤트 객체
+     */
+    function handleKeyup(event){
+      if(event.key === 'Enter') handleAdd();
+    }
+
+    /**
+     * 새로운 Todo 아이템을 목록에 추가하는 함수
+     * @param {string} title - 추가할 Todo 아이템의 제목
+     */
     function addItem(title){
+      const todoList = document.querySelector('.todolist');
 
+      const item = {
+        // children: 자식노드의 목록(요소노드)
+        no: todoList.children.length + 1,
+        // no: document.querySelectorAll('.todolist > li').length + 1,
+        // no: ++itemNo,
+        // title: title, // 속성값을 담는 변수가 속성명과 일치할 경우 속성값 생략 가능
+        title,
+        done: false // 미완료 상태
+      };
+      const todoLi = getTodoItemElem(item);
+      console.log(todoLi);
+      
+      todoList.appendChild(todoLi);
     }
 
-    // 완료/미완료 처리
+    /**
+     * Todo 아이템의 완료/미완료 상태를 토글하는 함수
+     * @param {number} no - 토글할 Todo 아이템의 번호
+     */
     function toggleDone(no){
-
-    }
-
-    // 할일 삭제
-    function deleteItem(no){
+      console.log(no);
       
     }
+
+    /**
+     * Todo 아이템을 삭제하는 함수
+     * @param {number} no - 삭제할 Todo 아이템의 번호
+     */
+    function deleteItem(no){
+      const targetLi = document.querySelector(`.todolist > li[data-no="${no}"]`);
+      targetLi.remove();
+    }
+
   </script>
 </body>
 </html>
