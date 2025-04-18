@@ -59,3 +59,65 @@
 6
 */
 
+/* 입력
+39
+40
+41
+42
+43
+44
+82
+83
+84
+85
+*/
+
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
+//console.log(fileData);
+
+//fileData 배열을 number로 변환
+const numbers = fileData.map((item) => parseInt(item, 10));
+//console.log(numbers);
+// ai 수정 코드
+let devideResult = [];
+for (let i = 0; i < numbers.length; i++) {
+  const remainder = numbers[i] % 42;
+
+  //해당 나머지가 배열에 있는지 확인
+  let isDuplicate = false;
+  for (let j = 0; j < devideResult.length; j++) {
+    if (remainder === devideResult[j]) {
+      isDuplicate = true;
+      break;
+    }
+  }
+
+  //중복이 아니면 배열에 추가
+  if (!isDuplicate) {
+    devideResult.push(remainder);
+  }
+}
+//다른 나머지 갯수 출력
+console.log(devideResult.length);
+
+// 개인 작성 코드, 오답
+/*
+let count = 0;
+let devideResult = [];
+
+for (let i = 0; i < numbers.length; i++) {
+  devideResult[i] = numbers[i] % 42;
+
+  if (devideResult[i] !== devideResult[i + 1]) {
+    count++;
+  }
+}
+console.log(devideResult);
+*/
+
+// 개인 작성 number 배열 반환 코드, 오류
+/*
+for (var i of fileData) {
+  fileData[i] ? parseInt(fileData[i]) : "";
+}*/
