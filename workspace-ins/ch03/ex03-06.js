@@ -33,40 +33,31 @@ console.log(s1.avg());
  * @param {number} eng 영어 점수
  */
 
-class College{
-  constructor(kor, eng){
-    HighSchool.call(this, kor, eng);
-  }
+class College extends HighSchool{
+  // constructor(kor, eng){
+  //   super(kor, eng); // 부모(HighSchool)의 생성자 호출
+  // }
+
+  // constructor()를 생략할 경우 자동으로 추가
+  constructor(...args){
+    super(...args);
+  }  
+
+  grade(){
+    let level = 'F';
+    const avg = this.avg();
+    if(avg >= 90){
+      level = 'A';
+    }else if(avg >= 80){
+      level = 'B';
+    }else if(avg >= 70){
+      level = 'C';
+    }else if(avg >= 60){
+      level = 'D';
+    }
+    return level;
+  };
 }
-
-
-inherite(HighSchool, College);
-
-// Child가 Parent를 상속 받는다.
-function inherite(Parent, Child){
-  // const F = new Function();
-  // F.prototype = Parent.prototype;
-  // Child.prototype = new F();
-
-  // Object.create(): 지정한 prototype 객체를 참조하는 인스턴스 생성
-  Child.prototype = Object.create(Parent.prototype);
-  Child.prototype.constructor = Child;
-}
-
-College.prototype.grade = function(){
-  let level = 'F';
-  const avg = this.avg();
-  if(avg >= 90){
-    level = 'A';
-  }else if(avg >= 80){
-    level = 'B';
-  }else if(avg >= 70){
-    level = 'C';
-  }else if(avg >= 60){
-    level = 'D';
-  }
-  return level;
-};
 
 const c1 = new College(80, 99);
 console.log(c1.sum()); // 179
