@@ -1,8 +1,8 @@
-.vscode
-.history
+.vscode/
+.history/
 PPT/~$*
 tempCode**.js
 tempCodeRunnerFile.*
 workspace/ch06/*.js
 workspace/ch07/*.js
-.github
+.github/
