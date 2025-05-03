@@ -2,6 +2,12 @@
 // ex06-23.js 복사
 
 (() => {
+  // Todo 인터페이스 정의
+  interface Todo {
+    title: string;
+    content?: string; // 옵셔널 속성
+  }
+
   const todo1 = {
     title: "Ajax",
     content: "서버와 통신하는 Ajax 배우기",
@@ -18,5 +24,5 @@
   todo4.content = "Date, String, Array 등의 내장 객체 배우기";
 
   // todo4.content가 없으면 런타임 에러
-  console.log(todo1, todo2, todo3, todo4.content.toUpperCase());
+  console.log(todo1, todo2, todo3, todo4.content?.toUpperCase());
 })();
