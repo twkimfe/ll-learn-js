@@ -1,10 +1,9 @@
 // 내장 객체 - Math
 
-(()=>{
-
+(() => {
   console.log(Math.abs(-5)); // 5 절대값
   console.log(Math.round(4.6)); // 5 소수 첫째자리에서 반올림
-  console.log(Math.ceil(4.1)); // 5 소수 첫째자리에서 올림
+  console.log(Math.ceil(4.1)); // 5 소수 첫째자리에서 올림, 4.1보다 크지만, 가장 작은 정수를 반환
   console.log(Math.floor(4.9)); // 4 소수 첫째자리에서 내림
   console.log(Math.floor(-4.9)); // -5 소수 첫째자리에서 내림
   console.log(Math.trunc(4.9)); // 4 소수 버림
@@ -22,7 +21,4 @@
   console.log(Math.pow(2, 3)); // 8 거듭제곱
   console.log(Math.sqrt(9)); // 3 제곱근
   console.log(Math.PI); // 3.141592653589793
-  
 })();
-
-
