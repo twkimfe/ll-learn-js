@@ -16,8 +16,9 @@
   const objHaru = JSON.parse(strHaru);
 
   console.log(typeof haru, haru);
-  console.log(strHaru);
-  console.log(strHaru2);
-  console.log(strHaru3);
-  console.log(strHaru4);
+  console.log(typeof strHaru, strHaru);
+  console.log(typeof strHaru, strHaru2);
+  console.log(typeof strHaru, strHaru3);
+  console.log(typeof strHaru, strHaru4);
+  console.log(typeof objHaru, objHaru);
 })();
