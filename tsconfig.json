@@ -109,5 +109,6 @@
     "skipLibCheck": true /* Skip type checking all .d.ts files. */
   },
   "include": ["workspace/**/*"],
-  "exclude": ["node_modules", "sample/**/*", "**/tempCodeRunnerFile.ts"]
+ // "exclude": ["node_modules", "sample/**/*", "**/tempCodeRunnerFile.ts"]
+  "exclude": ["node_modules", "sample/**/*", "**/tempCodeRunnerFile.ts", "ts-refactoring/**/*"]
 }
