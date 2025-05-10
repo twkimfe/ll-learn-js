@@ -60,6 +60,14 @@ joinRoomBtn.addEventListener("click", async () => {
  */
 leaveRoomBtn.addEventListener("click", () => {
     // TODO 채팅방 퇴장 함수 호출
+    /**
+     * 현재 채팅방에서 나가는 함수
+     * @description 사용자가 현재 참여 중인 채팅방을 나갈 때 호출되는 함수입니다.
+     * 서버에 leaveRoom 이벤트를 발생시켜 채팅방 퇴장을 알립니다.
+     */
+    function leaveRoom() {
+        socket.emit("leaveRoom");
+    }
 });
 /**
  * 전체 채팅방 목록 조회 이벤트 핸들러
