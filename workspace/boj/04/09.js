@@ -130,8 +130,9 @@ M번 바구니의 순서를 역순으로 만든 다음, 바구니에 적혀있�
 6 7 3 2 1 10 9 8 4 5
 */
 
-const fs = require('fs');
-const fileData = fs.readFileSync(0).toString().trim().split(' ');
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
 console.log(fileData);
 
 const n = parseInt(fileData[0][0]);
+const m = parseInt(fileData[0][1]);
