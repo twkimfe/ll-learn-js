@@ -46,6 +46,6 @@ function printStr(msg){
 
   // hello일 경우
   for(let i=0; i<msg.length; i++){ // i=0, 1, 2, 3, 4
-    console.log(i, msg[i]);
+    console.log(msg[i]);
   }
 }

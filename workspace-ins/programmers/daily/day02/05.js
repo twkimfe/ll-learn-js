@@ -27,6 +27,12 @@ my_string	overwrite_string	s	result
 */
 
 function solution(my_string, overwrite_string, s) {
-  var answer = '';
+  // cf01) my_string = 'He11oWor1d', overwrite_string = 'lloWorl', s = 2
+  const firstWord = my_string.slice(0, s); // He
+  const lastWord = my_string.slice(s + overwrite_string.length);
+  var answer = firstWord + overwrite_string + lastWord;
   return answer;
 }
+
+console.log(solution('He11oWor1d', 'lloWorl', 2) === 'HelloWorld');
+console.log(solution('Program29b8UYP', 'merS123', 7) === 'ProgrammerS123');

@@ -3,7 +3,7 @@
 
 # 개발 환경 구축
 ## 프로그램 설치
-- 본인의 OS에 맞는 버전 다운로드 후 설치
+* 본인의 OS에 맞는 버전 다운로드 후 설치
   - Nodejs 설치 <https://nodejs.org/en/download/>
   - Visual Studio Code 설치 <https://code.visualstudio.com/download>
   - Git 설치 <https://git-scm.com/downloads>
@@ -11,27 +11,30 @@
     - Postman <https://www.postman.com/downloads>
     - Bruno <https://www.usebruno.com/downloads>
     
-# 실습 준비
-## Github 저장소 복사
+## 실습 준비
+### Github 저장소 복사
 1. 자바스크립트 실습 Github 저장소
     * `https://github.com/FEBC-13/JS.git`
+
 2. 터미널 프로그램 실행 후 개발 수업에 사용할 폴더 생성 후 이동
     * 예시
     ```sh
     mkdir febc13
     cd febc13
     ```
+
 3. 자바스크립트 수업에 사용할 폴더 생성 후 이동
     ```sh
     mkdir 01_js
     cd 01_js
     ```
+    
 4. 실습 저장소를 로컬에 clone
     ```sh
     git clone https://github.com/FEBC-13/JS.git
     ```
 
-## 실습 저장소의 변경사항 동기화
+### 실습 저장소의 변경사항 동기화
 * github 저장소의 변경사항을 가져올 때
     ```sh
     git pull origin main
@@ -42,68 +45,74 @@
     npx degit https://github.com/FEBC-13/JS/sample/02 sample/02 
     ```
 
-## Visual Studio Code 설정
+### Visual Studio Code 설정
 1. VSCode 실행
 2. 프로젝트 선택
-    * File > Open Folder... > febc13/01.js/JS 선택
+    * File > Open Folder... > febc13/01_js/JS 선택
 3. File > Preferences > Settings
-	* "Files: Auto Save": onFocusChange
-	* "Editor: Font Size": 각자 맞춰서 조절
-	* "Editor: Tab Size": 2
-	* "Editor: Detect Indentation": 체크 해제
-	* Workspace 탭 > "Files: Readonly Include"
+    * "Files: Auto Save": onFocusChange
+    * "Editor: Font Size": 각자 맞춰서 조절
+    * "Editor: Tab Size": 2
+    * "Editor: Detect Indentation": 체크 해제
+    * Workspace 탭 > "Files: Readonly Include"
       - Readonly Include가 보이지 않을 경우 VSCode를 최신 버전(1.79 이상)으로 업데이트
       - Add Pattern > `PPT/**` 입력한 후 OK 선택
       - Add Pattern > `workspace-ins/**` 입력한 후 OK 선택
       - Add Pattern > `sample/**` 입력한 후 OK 선택
 
-## sample 폴더 복사
+### sample 폴더 복사
 * sample/01/workspace 폴더를 복사해서 프로젝트 루트에 붙여넣기
 * 완성된 강사의 코드는 [workspace-ins](<https://github.com/FEBC-13/JS/tree/main/workspace-ins>) 폴더에서 확인할 수 있음
 
-## 웹 서버 구동
+## 실습 테스트
+
+### 터미널 테스트
+* workspace/ch06/ex06-01.ts 파일 작성
+  ```ts
+  function hello(name: string): string {
+    return 'Hello ' + name;
+  }
+  console.log(hello('TypeScript'));
+  ```
+
+### 웹 브라우저 테스트
+#### 웹 서버 구동
 1. VSCode의 터미널로 이동
     * VSCode 하단의 TERMINAL이 보이지 않으면 View > Terminal
 2. Live Server 구동
     ```sh
     npx live-server workspace
     ```
-3. 접속
-    * <http://127.0.0.1:8080>
-    * <http://localhost:8080>
-
-## 실습 테스트
+#### 테스트
+* 웹 브라우저로 접속
+  - <http://127.0.0.1:8080>
+  - <http://localhost:8080>
 * 각 예제 클릭해서 테스트
   - .js: Javascript 문법 관련 실습은 브라우저 개발자 도구 > 콘솔 탭에서 결과 확인
   - .html: DOM, Ajax 관련 실습은 새로운 화면으로 이동 후 테스트
 
-## TypeScript Compiler 설치
+### Node.js 테스트
+```sh
+cd workspace/ch01
+node ex01-04.js
+```
+
+# 타입스크립트
+## 타입스크립트 Compiler 설치
 * node.js용 TypeScript Compiler 모듈을 global로 설치(어느 경로에서나 tsc 명령어 사용 가능)
 * VSCode > View > Terminal
     ```sh
     npm i -g typescript
     ```
 
-## 터미널 테스트
-* workspace/ch06/ex06-01.ts 파일 작성
-
-```ts
-function hello(name: string): string {
-  return 'Hello ' + name;
-}
-console.log(hello('TypeScript'));
-```
-
-### Node.js로 실행
-#### 컴파일
-
+## 실행
+### 타입스크립트 컴파일 후 js 실행
 ```sh
 cd workspace/ch06
 tsc ex06-01.ts
 ```
 
-#### 실행
-
+### 실행 
 ```sh
 node ex06-01.js
 ```
@@ -159,7 +168,6 @@ tsc --init
 ```sh
 tsc --watch
 ```
-
 
 # 팁
 * VSCode에서 소스코드 비교
