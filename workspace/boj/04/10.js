@@ -69,3 +69,36 @@
 55.55555555555556
 */
 
+const fs = require("fs");
+const fileData = fs.readFileSync(0).toString().trim().split("\n");
+//console.log(fileData);
+
+//ai 개선 코드
+const score = fileData[1].split(" ").map(Number);
+const M = Math.max(...score);
+//console.log(M);
+const newArr = [];
+for (let i = 0; i < score.length; i++) {
+  newArr[i] = (score[i] / M) * 100;
+}
+const average = newArr.reduce((sum, score) => sum + score, 0) / newArr.length;
+
+console.log(average);
+/*
+//개인 작성 코드
+const score = fileData[1].split(" ").map(Number);
+const M = Math.max(...score);
+//console.log(M);
+const newArr = [];
+for (let i = 0; i < score.length; i++) {
+  newArr[i] = (score[i] / M) * 100;
+}
+function average(...arry) {
+  let sum = 0;
+  for (let k = 0; k < arry.length; k++) {
+    sum += arry[k];
+  }
+  return (avg = sum / arry.length);
+}
+console.log(average(...newArr));
+*/

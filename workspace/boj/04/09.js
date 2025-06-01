@@ -132,7 +132,46 @@ M번 바구니의 순서를 역순으로 만든 다음, 바구니에 적혀있�
 
 const fs = require("fs");
 const fileData = fs.readFileSync(0).toString().trim().split("\n");
-console.log(fileData);
+// console.log(fileData);
 
+//ai 작성 정답
+const [n, m] = fileData[0].split(" ").map(Number);
+
+//1부터 N까지 바구니 배열 초기화
+let arr = [];
+for (let k = 1; k <= n; k++) {
+  arr.push(k);
+}
+
+//m번의 역순 연산 수행
+for (let k = 1; k <= m; k++) {
+  const [i, j] = fileData[k].split(" ").map(Number);
+
+  //i번부터 j번까지 역순으로 변경
+  //배열 index는 0부터 시작, i-1, j-1로 변환
+  const left = i - 1;
+  const right = j - 1;
+
+  //부분 배열 추출, 역순으로 작성 후 다시 삽입
+  const reversed = arr.slice(left, right + 1).reverse();
+  arr.splice(left, right - left + 1, ...reversed);
+}
+
+//결과 출력
+console.log(arr.join(" "));
+
+/* 개인 작성 코드 - 오답
 const n = parseInt(fileData[0][0]);
-const m = parseInt(fileData[0][1]);
+let arr = [];
+for (let k = 1; k <= n; k++) {
+  arr.push(k);
+
+  const rowArr = fileData[k];
+  const i = rowArr[0][0];
+  const j = rowArr[0][1];
+
+  console.log(i);
+  console.log(j);
+}
+console.log(arr);
+*/
