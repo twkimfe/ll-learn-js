@@ -26,3 +26,11 @@ OO
 AB
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split("\n");
+const caseNum = inputData[0];
+
+for (let i = 1; i <= caseNum; i++) {
+  const word = inputData[i];
+  console.log(word[0] + word[word.length - 1]);
+}

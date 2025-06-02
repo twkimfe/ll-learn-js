@@ -19,3 +19,8 @@ pulljima
 8
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split("\n");
+const word = inputData[0]
+
+console.log(word.length);

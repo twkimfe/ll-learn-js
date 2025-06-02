@@ -32,3 +32,17 @@ Baekjoon
 k
 */
 
+//ai 수정 코드
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split("\n");
+const word = inputData[0]
+const position = parseInt(inputData[1]) - 1;
+console.log(word[position]);
+
+// //개인 코드, 오답
+// const fs = require("fs");
+// const inputData = fs.readFileSync(0).toString().trim().split("\n");
+// // console.log(inputData);
+// const num = inputData[1].split("").map(Number)-1;
+
+// console.log(inputData[0][`${num}`]);
