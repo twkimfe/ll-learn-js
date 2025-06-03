@@ -1,5 +1,5 @@
 /*
-분류: 
+분류: 조건문
 문제: 수 조작하기 1
 url: https://school.programmers.co.kr/learn/courses/30/lessons/181926?language=javascript
 

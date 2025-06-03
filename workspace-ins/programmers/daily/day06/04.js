@@ -1,5 +1,5 @@
 /*
-분류: 
+분류: 반복문
 문제: 수열과 구간 쿼리 3
 url: https://school.programmers.co.kr/learn/courses/30/lessons/181924?language=javascript
 
@@ -33,6 +33,16 @@ arr
 */
 
 function solution(arr, queries) {
-  var answer = [];
-  return answer;
+  for(query of queries){
+    const i = query[0];
+    const j = query[1];
+
+    const temp = arr[i]; // arr -> [0, 3]
+    arr[i] = arr[j]; // arr[0] = arr[3]
+    arr[j] = temp; // arr[3] = temp
+  }
+
+  return arr;
 }
+
+console.log(solution([0, 1, 2, 3, 4], [[0, 3],[1, 2],[1, 4]])); // [3, 4, 1, 0, 2
