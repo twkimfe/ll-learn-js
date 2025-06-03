@@ -37,3 +37,21 @@ N개의 숫자가 공백 없이 쓰여있다. 이 숫자를 모두 합해서 출
 46
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split("\n");
+
+//ai 수정
+//inputData를 문자열로 호출, 호출 문자열의 각 자리 숫자를 배열로 변환
+const numString = inputData[1];
+const numArray = numString.split("").map(Number);
+//reduce로 sum값 합산 제출
+const sum = numArray.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+}, 0);
+
+console.log(sum);
+
+//개인 코드, 오류
+// console.log(inputData);
+// const numList = [inputData[1]];
+// const sum = numList.reduce()

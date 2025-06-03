@@ -27,3 +27,22 @@ AAABBBCCC
 /////HHHHHTTTTTPPPPP
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split("\n");
+
+//caseNum 토대로 문자열 출력
+const caseNum = inputData[0];
+for (let i = 1; i <= caseNum; i++) {
+  const wordString = inputData[i];
+  const wordArray = wordString.split("").filter((char) => char !== " ");
+  //console.log(wordArray);
+
+  //문자열 중, 반복 횟수/문자열 구분, 처리 후 출력
+  const R = wordArray[0];
+  let newArry = "";
+  for (let j = 1; j < wordArray.length; j++) {
+    const result = wordArray[j].repeat(R);
+    newArry += result;
+  }
+  console.log(newArry);
+}
