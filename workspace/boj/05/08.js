@@ -84,3 +84,8 @@ A
 1
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim();
+const wordCount = inputData === "" ? 0 : inputData.split(" ").length;
+
+console.log(wordCount);
