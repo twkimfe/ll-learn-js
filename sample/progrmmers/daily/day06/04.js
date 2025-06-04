@@ -1,5 +1,5 @@
 /*
-분류: 
+분류: 반복문
 문제: 수열과 구간 쿼리 3
 url: https://school.programmers.co.kr/learn/courses/30/lessons/181924?language=javascript
 
