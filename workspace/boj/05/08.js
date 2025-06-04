@@ -84,8 +84,13 @@ A
 1
 */
 
+/* ai검토 작성 코드
 const fs = require("fs");
 const inputData = fs.readFileSync(0).toString().trim();
 const wordCount = inputData === "" ? 0 : inputData.split(" ").length;
 
 console.log(wordCount);
+*/
+const fs = require("fs");
+const input = fs.readFileSync(0, "utf8").trim();
+console.log((input && input.split(/\s+/).length) || 0);
