@@ -21,6 +21,10 @@ start_num	end_num	result
 
 function solution(start_num, end_num) {
   var answer = [];
+  // TODO: 작성해 보세요.
+  for(let i=start_num; i<=end_num; i++){
+    answer.push(i);
+  }
   return answer;
 }
 

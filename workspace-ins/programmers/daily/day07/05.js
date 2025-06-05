@@ -41,6 +41,16 @@ i	arr[i]	stk
 
 function solution(arr) {
   var stk = [];
+  let i = 0;
+  while(i < arr.length){
+    // 빈 배열일이거나 stk의 마지막 원소가 arr[i] 보다 작을 경우
+    if(stk.length === 0 || stk[stk.length-1] < arr[i]){
+      stk.push(arr[i]);
+      i++;
+    }else{
+      stk.pop();
+    }
+  }
   return stk;
 }
 
