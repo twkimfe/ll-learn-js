@@ -38,3 +38,21 @@
 938
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split(" ");
+
+//caseNum 토대로 문자열 출력
+const inputNum = [...inputData];
+let result = [];
+// console.log(inputNum);
+
+//숫자 문자열 반전처리
+for (let i = 0; i < inputNum.length; i++) {
+  let reversedNum = inputNum[i].split("").reverse().join("");
+  result.push(reversedNum);
+}
+// console.log(result);
+
+//다 숫자 비교, 더 큰 수 제출
+maxNum = Math.max(...result);
+console.log(maxNum);
