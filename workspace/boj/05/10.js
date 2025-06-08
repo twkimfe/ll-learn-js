@@ -36,3 +36,15 @@ UNUCIC
 36
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split("");
+// console.log(inputData);
+
+const dialAlphabet = ["", "", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"];
+
+for (let i = 0; i < inputData.length; i++) {
+  const dialPosition = dialAlphabet.includes(inputData[i]);
+  if (dialPosition) {
+    console.log(dialPosition);
+  }
+}
