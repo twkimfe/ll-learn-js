@@ -42,9 +42,27 @@ const inputData = fs.readFileSync(0).toString().trim().split("");
 
 const dialAlphabet = ["", "", "ABC", "DEF", "GHI", "JKL", "MNO", "PQRS", "TUV", "WXYZ"];
 
+// ai 정답 코드
+let totalTime = 0;
+
+for (let i = 0; i < inputData.length; i++) {
+  const dialPosition = dialAlphabet.findIndex( str => {
+    return str.includes(inputData[i])
+  });
+
+  if(dialPosition !== -1) {
+    const dialTime = dialPosition + 1;
+    totalTime += dialTime
+  }
+}
+
+console.log(totalTime);
+
+/* 개인 코드, 오답
 for (let i = 0; i < inputData.length; i++) {
   const dialPosition = dialAlphabet.includes(inputData[i]);
   if (dialPosition) {
-    console.log(dialPosition);
+    console.log(dialAlphabet.indexOf(inputData[i]));
   }
 }
+*/
