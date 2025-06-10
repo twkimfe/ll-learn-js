@@ -1,7 +1,7 @@
 /*
 제목: 그대로 출력하기
 설명: 그대로 출력하기
-제출: 
+제출: https://www.acmicpc.net/problem/11718
 
 문제
 입력 받은 대로 출력하는 프로그램을 작성하시오.
@@ -135,3 +135,9 @@ Single line input
 Single line input
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split('\n');
+
+  for (let i = 0; i <inputData.length; i++) {
+    console.log(inputData[i]);
+}
