@@ -46,3 +46,10 @@
     *
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split(" ").map(Number);
+// console.log(inputData);
+
+  for (let i = 0; i <inputData.length; i++) {
+    
+}

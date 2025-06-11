@@ -30,3 +30,33 @@
 -1 0 0 1 0 7
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split(" ").map(Number);
+//console.log(inputData);
+
+//ai 수정 답안
+const chessmanNum = [1, 1, 2, 2, 2, 8];
+const result = [];
+
+for (let i = 0; i < chessmanNum.length; i++) {
+    const needed = chessmanNum[i] - inputData[i];
+    result.push(needed);
+}
+
+console.log(result.join(' '));
+
+// 개인 코드, 오답
+// const chessmanNum = [1, 1, 2, 2, 2, 8];
+// const result = []
+
+// for (let i = 0; i < chessmanNum.length; i++) {
+//   if (inputData[i] < chessmanNum[i]) {
+//     parseInt(inputData[i]) += parseInt(chessmanNum[i]) - parseInt(inputData[i]);
+//   } else if ((inputData[i] === chessmanNum[i])) {
+//     parseInt(inputData[i]) = parseInt(chessmanNum[i]);
+//   } else {
+//     parseInt(inputData[i]) += parseInt(inputData[i]) - parseInt(chessmanNum[i]);
+//   }
+//   result.push(inputData)
+// }
+// console.log(result.join(' '));
