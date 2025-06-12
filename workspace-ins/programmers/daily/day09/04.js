@@ -35,7 +35,11 @@ my_string	result
 
 function solution(my_string) {
   var answer = [];
-  return answer;
+  for(let i=0; i<my_string.length; i++){
+    // slice()
+    answer.push(my_string.slice(i));
+  }
+  return answer.sort();
 }
 
 console.log(solution("banana")); // ["a", "ana", "anana", "banana", "na", "nana"]

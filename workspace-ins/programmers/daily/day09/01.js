@@ -35,7 +35,16 @@ idx	잘라낸 문자열	ret
 
 function solution(intStrs, k, s, l) {
   var answer = [];
+  for(let i=0; i<intStrs.length; i++){
+    // 배열의 slice()
+    // https://github.com/FEBC-13/React/tree/main/workspace-ins/ch01-buildup#296-slice
+    const str = Number(intStrs[i].slice(s, s + l));
+    if(str > k) {
+      answer.push(str);
+    }
+  }
   return answer;
 }
 
 console.log(solution(["0123456789", "9876543210", "9999999999999"], 50000, 5, 5)); // [56789, 99999]
+console.log(solution(["0123456789", "9876543210", "9999999999999"], 300, 2, 3)); // [765, 999]

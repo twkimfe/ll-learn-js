@@ -27,6 +27,8 @@ my_string	n	result
 
 function solution(my_string, n) {
   var answer = '';
+  // slice
+  answer = my_string.slice(-n);
   return answer;
 }
 
