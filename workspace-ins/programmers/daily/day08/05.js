@@ -32,8 +32,23 @@ queries	my_string
 */
 
 function solution(my_string, queries) {
-  var answer = '';
+  var answer = my_string;
+
+  queries.forEach((elem) => {
+    // const s = elem[0];
+    // const e = elem[1];
+    const [s, e] = elem; // 구조 분해 할당
+
+    const first = answer.slice(0, s);
+    const second = answer.slice(s, e + 1);
+    const third = answer.slice(e + 1);
+
+    answer = first + second.split('').reverse().join('') + third;
+  });
+  
   return answer;
+
+  // return queries.reduce((acc, [s, e]) => acc.slice(0, s) + acc.slice(s, e + 1).split('').reverse().join('') + acc.slice(e + 1), my_string);
 }
 
 console.log(solution("rermgorpsam", [[2, 3], [0, 7], [5, 9], [6, 10]])); // "programmers"
