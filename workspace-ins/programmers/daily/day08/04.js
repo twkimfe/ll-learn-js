@@ -31,7 +31,10 @@ number	result
 
 function solution(number) {
   var answer = 0;
-  return answer;
+  for(let i=0; i<number.length; i++){
+    answer += Number(number[i]);
+  }
+  return answer % 9;
 }
 
 console.log(solution("123")); // 6
