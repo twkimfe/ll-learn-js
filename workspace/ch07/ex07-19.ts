@@ -1,5 +1,10 @@
 // 내장 객체 Array - reduce()
 
 (()=>{
-  
+  const arr = [ 1, 2, 3, 4 ]
+  const sum = arr.reduce((acc, num, index) => {
+    console.log(`${index} => ${ acc } + ${ acc + num}`);
+    return acc + num
+  }, 0)
+  console.log(sum);
 })();
