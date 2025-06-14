@@ -46,10 +46,50 @@
     *
 */
 
+// 참고 코드
+// https://www.acmicpc.net/source/92804383
 const fs = require("fs");
 const inputData = fs.readFileSync(0).toString().trim().split(" ").map(Number);
 // console.log(inputData);
+let starUp = ''
+let starDown = ''
 
-  for (let i = 0; i <inputData.length; i++) {
-    
+// 위쪽 별 출력
+for (let i = 0; i < inputData[0]; i++) {
+  let line = "";
+
+  // 위쪽 공백 추가
+  line += " ".repeat(inputData[0] - 1 - i);
+  // 위쪽 별 추가
+  line += "*".repeat( 2 * i + 1 )
+  starUp += line + "\n";
 }
+
+//ai 코드, 정답
+// 아래쪽 별 출력
+for (let i = 1; i < inputData[0]; i++) {
+  let line = "";
+
+  // 아래쪽 공백 추가
+  line += " ".repeat(i)
+  // 아래쪽 별 추가
+  line += "*".repeat( 2 * ( inputData[0] - 1 -i ) + 1 );
+
+  starDown += line + "\n";
+}
+let result = starUp + starDown;
+console.log(result);
+
+//개인 코드, 오답
+// 아래쪽 별 출력
+// for (let i = 1; i < inputData[0]; i++) {
+//   let line = "";
+
+//   // 아래쪽 공백 추가
+//   line += " ".repeat(i)
+//   // 아래쪽 별 추가
+//   line += "*".repeat( 2 * i + 1 );
+
+//   starDown += line + "\n";
+// }
+// console.log(starDown);
