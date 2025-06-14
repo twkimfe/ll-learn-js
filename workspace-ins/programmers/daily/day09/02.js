@@ -33,7 +33,13 @@ i	my_strings[i]	parts[i]	부분 문자열
 
 function solution(my_strings, parts) {
   var answer = '';
+  my_strings.forEach((str, i) => {
+    const [s, e] = parts[i];
+    // slice() 사용
+    answer += str.slice(s, e + 1);
+  });
   return answer;
 }
 
 console.log(solution(["progressive", "hamburger", "hammer", "ahocorasick"], [[0, 4], [1, 2], [3, 5], [7, 7]])); // "programmers"
+console.log(solution(["hello", "javascript", "world"], [[1, 3], [3, 5], [2, 2]])); // "ellascr"

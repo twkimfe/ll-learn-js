@@ -37,6 +37,14 @@ my_string	is_suffix	result
 
 function solution(my_string, is_suffix) {
   var answer = 0;
+  // const index = my_string.lastIndexOf(is_suffix);
+  // if(index !== -1 && (index === my_string.length - is_suffix.length)){
+  //   answer = 1;
+  // }
+
+  if(my_string.endsWith(is_suffix)){
+    answer = 1;
+  }
   return answer;
 }
 
@@ -44,3 +52,5 @@ console.log(solution("banana", "ana")); // 1
 console.log(solution("banana", "nan")); // 0
 console.log(solution("banana", "wxyz")); // 0
 console.log(solution("banana", "abanana")); // 0
+console.log(solution("banana", "a")); // 1
+console.log(solution("banana", "na")); // 1
