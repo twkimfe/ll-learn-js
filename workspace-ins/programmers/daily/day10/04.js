@@ -40,6 +40,21 @@ h	y	g	c
 
 function solution(my_string, m, c) {
   var answer = '';
+
+  // let strIndex = 0;
+  // for(let i=0; i<my_string.length/m; i++){ // 5
+  //   for(let k=0; k<m; k++){ // 4
+  //     if(k === c-1) {
+  //       answer += my_string[strIndex];
+  //     }
+  //     strIndex++;
+  //   }
+  // }
+
+  for(let i=c-1; i<my_string.length; i+=m){
+    answer += my_string[i];
+  }
+
   return answer;
 }
 

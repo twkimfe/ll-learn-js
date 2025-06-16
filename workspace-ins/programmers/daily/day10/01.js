@@ -27,6 +27,10 @@ my_string	n	result
 
 function solution(my_string, n) {
   var answer = '';
+  // for(let i=0; i<n; i++){
+  //   answer += my_string[i];
+  // }
+  answer = my_string.slice(0, n);
   return answer;
 }
 
