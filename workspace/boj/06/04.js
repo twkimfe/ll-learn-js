@@ -27,3 +27,28 @@ baekjoon
 0
 */
 
+// 방법1: for문으로 직접 비교
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split("");
+// console.log(inputData);
+
+// ai 수정 코드
+let isPalindrome = true
+  for (let i = 0; i <(inputData.length / 2); i++) {
+    if ( inputData[i] !== inputData[inputData.length - 1 - i]) {
+      isPalindrome = false;
+      break
+    } 
+}
+console.log(isPalindrome ? 1 : 0);
+
+// 개인코드, 거의 맞음
+//   for (let i = 0; i <(inputData.length / 2); i++) {
+//     if ( inputData[i] !== inputData[inputData.length - 1 - i]) {
+//       return console.log(0);
+//     } 
+// }
+// console.log(1);
+
+// 방법2: 문자열 뒤집기 메서드 활용
+// split('').reverse().join('')
