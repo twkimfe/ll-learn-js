@@ -11,8 +11,8 @@ workspace/ch07/*.js
 workspace/ch08/*.js
 workspace/ch08/**/*.js
 # workspace-ins/ts-refactoring/**/*
-workspace-ins/ts-refactoring/**/*.js
-!workspace-ins/ts-refactoring/convert-js-to-ts.js
+# workspace-ins/ts-refactoring/**/*.js
+# workspace-ins/ts-refactoring/convert-js-to-ts.js
 node_modules
 package.json
 package-lock.json
