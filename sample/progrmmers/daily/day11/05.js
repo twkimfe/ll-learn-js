@@ -32,7 +32,13 @@ arr	idx	result
 */
 
 function solution(arr, idx) {
-  var answer = 0;
+  var answer = -1;
+  for(let i=idx; i<arr.length; i++){
+    if(arr[i] === 1){
+      answer = i;
+      break;
+    }
+  }
   return answer;
 }
 
