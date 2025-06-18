@@ -28,7 +28,7 @@ baekjoon
 */
 
 const fs = require("fs");
-const inputData = fs.readFileSync(0).toString().trim().split("");
+const inputData = fs.readFileSync(0).toString().trim();
 // console.log(inputData);
 
 //TODO 방법1: for문으로 직접 비교
@@ -53,3 +53,7 @@ console.log(isPalindrome ? 1 : 0);
 
 //TODO 방법2: 문자열 뒤집기 메서드 활용
 // split('').reverse().join('')
+const reverseWord = inputData.split('').reverse().join('')
+// console.log(reverseWord);
+const isPalindrome = inputData === reverseWord;
+console.log(isPalindrome ? 1 : 0);
