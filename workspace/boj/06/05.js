@@ -36,3 +36,30 @@ baaa
 A
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().toUpperCase();
+// console.log(inputData);
+
+const wordCheck = [...inputData] 
+// inputData는 문자열이라서 map() 사용 불가
+// console.log(wordCheck);
+const frequency = {};
+
+  for (let char of wordCheck) {
+    frequency[char] = frequency[char] ? frequency[char] + 1 : 1
+}
+
+const maxCount = Math.max(...Object.values(frequency));
+
+const maxChars = Object.keys(frequency).filter(
+  key => {
+    // console.log(`${key}: ${frequency[key]}`);
+    return frequency[key] === maxCount
+  }
+)
+
+if (maxChars.length === 1 ) {
+  console.log(maxChars[0]);
+} else {
+  console.log('?');
+}
