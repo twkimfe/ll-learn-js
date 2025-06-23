@@ -50,6 +50,7 @@ const frequency = {};
 }
 
 const maxCount = Math.max(...Object.values(frequency));
+// 객체 내부 값을 꺼내는 메서드
 
 const maxChars = Object.keys(frequency).filter(
   key => {
