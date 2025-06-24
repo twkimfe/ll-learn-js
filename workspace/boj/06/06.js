@@ -56,7 +56,50 @@ dz=ak
 
 const fs = require("fs");
 const inputData = fs.readFileSync(0).toString().trim()
-console.log(inputData);
+// console.log(inputData);
 
 const charArry = ["c=", "c-", "dz=", "d-", "lj", "nj", "s=", "z="]
-console.log(charArry);
+// console.log(charArry);
+
+// ai 수정 코드
+let count = 0;
+let i = 0;
+
+while ( i < inputData.length ) {
+  let found = false;
+
+  // 긴 패턴부터 확인
+  for (let pattern of charArry) {
+    if (i + pattern.length <= inputData.length) {
+      const substring = inputData.substring(i, i + pattern.length);
+      if (substring === pattern) {
+        count++;
+        i += pattern.length;
+        found = true;
+        break;
+      }
+    }
+  }
+  // 매칭 없을 시 일반 알파벳으로 판단
+  if (!found) {
+    count++;
+    i++
+  }
+}
+console.log(count);
+
+// 개인코드, 에러 - while문, for문 사용 방식 문제
+/*
+let count = 0;
+let word = inputData;
+for (let i = 0; i <charArry.length; i++) {
+  const includeWord = word.substring(word[i],i)
+  while (includeWord.includes(charArry[i])) {
+    count ++;
+    word = word.replace(charArry[i],'')
+  } 
+}
+console.log("count:", count);
+console.log("word.length:", word.length);
+console.log("합계:", count + word.length);
+*/
