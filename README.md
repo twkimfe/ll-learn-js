@@ -54,6 +54,8 @@
     * "Editor: Font Size": 각자 맞춰서 조절
     * "Editor: Tab Size": 2
     * "Editor: Detect Indentation": 체크 해제
+    * Search settings 항목에 `default profile windows` 검색
+      - Terminal > Intergrated > Default Profile: Windows 값을 `Git Bash`로 수정
     * Workspace 탭 > "Files: Readonly Include"
       - Readonly Include가 보이지 않을 경우 VSCode를 최신 버전(1.79 이상)으로 업데이트
       - Add Pattern > `PPT/**` 입력한 후 OK 선택
