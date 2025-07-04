@@ -76,5 +76,5 @@ zzaz
 */
 
 const fs = require("fs");
-const inputData = fs.readFileSync(0).toString().trim()
+const inputData = fs.readFileSync(0).toString().trim().split('\n')
 console.log(inputData);
