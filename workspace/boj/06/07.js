@@ -78,3 +78,12 @@ zzaz
 const fs = require("fs");
 const inputData = fs.readFileSync(0).toString().trim().split('\n')
 console.log(inputData);
+
+const result = {}
+
+for (i = 1; i < inputData.length - 1; i++) {
+  
+
+}
+
+// console.log(result);
