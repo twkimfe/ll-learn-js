@@ -77,13 +77,56 @@ zzaz
 
 const fs = require("fs");
 const inputData = fs.readFileSync(0).toString().trim().split('\n')
-console.log(inputData);
+// console.log(inputData);
 
-const result = {}
+// ai 수정 코드
+let count = 0;
+  for (let i = 1; i <inputData.length; i++) {
+  let isGroupWord = true;
+  let seenChars = []; // 지금까지 본 문자 저장
 
-for (i = 1; i < inputData.length - 1; i++) {
-  
+    for (let j = 0; j <inputData[i].length; j++) {
+      let currentChar = inputData[i][j];
+      let prevChar = inputData[i][j - 1];
 
+      // 현재 문자가 직전 문자와 다르면서, 이미 본 문자면 그룹 단어 아님
+      if (currentChar !== prevChar && seenChars.includes(currentChar)) {
+        isGroupWord = false;
+        break;
+      }
+
+      // 현재 문자를 본 문자 목록에 추가 (중복 방지)
+      if (!seenChars.includes(currentChar)) {
+        seenChars.push(currentChar);
+      }
+    }
+    if (isGroupWord) {
+      count++;
+    }
+  }
+
+console.log(count);
+
+// 개인 코드, 논리 오류로 오답
+/*
+let result = []
+let count = 0;
+
+for (i = 1; i < inputData.length; i++) {
+  let isGroupWord = true;
+  result = [];
+  for (let j = 0; j < inputData[i].length; j++) {
+    // 그룹 단어 조건 확인
+    if (j + 1 < inputData[i].length && inputData[i][j] !== inputData[i][j + 1] && !result.includes(inputData[i][j])) {
+      isGroupWord = false;
+      break;
+    } else {
+      result.push(inputData[i][j])
+    }
+  }
+  if(isGroupWord === true) {
+    count ++;
+  }
 }
-
-// console.log(result);
+console.log( count );
+*/
