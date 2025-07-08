@@ -88,3 +88,5 @@ SplayTree 1.0 F
 0
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split('\n')
