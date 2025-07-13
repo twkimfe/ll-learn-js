@@ -88,7 +88,44 @@ SplayTree 1.0 F
 0
 */
 
+// ai 질문으로 문제 풀이 작성
 const fs = require("fs");
 const inputData = fs.readFileSync(0).toString().trim().split('\n')
-console.log(inputData);
-console.log(inputData[0].split(' '));
+
+const gradePoints = {
+  'A+': 4.5,
+  'A0': 4.0,
+  'B+': 3.5,
+  'B0': 3.0,
+  'C+': 2.5,
+  'C0': 2.0,
+  'D+': 1.5,
+  'D0': 1.0,
+  'F': 0.0
+}
+
+let totalWeightedScore = 0; // (학점 * 과목평점) 합
+let totalMajorScore = 0; // 학점 총합
+let gpa = 0;
+
+  for (let i = 0; i <inputData.length; i++) {
+    let courseArr = inputData[i].split(' ')
+    let courseScore = parseFloat(parseInt(courseArr[1]))
+    let earnedPoints = gradePoints[courseArr[2]]
+    let weightedScore = 0
+
+    if (courseArr[2] === 'P') continue;
+    weightedScore = courseScore * earnedPoints
+    totalWeightedScore += weightedScore
+    totalMajorScore += courseScore
+
+    // console.log(courseArr);
+    // console.log(courseScore);
+    // console.log(earnedPoints);
+    // console.log(weightedScore);
+}
+
+// console.log(totalWeightedScore);
+// console.log(totalMajorScore);
+gpa = totalWeightedScore / totalMajorScore
+console.log(gpa);
