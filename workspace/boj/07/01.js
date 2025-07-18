@@ -148,3 +148,7 @@ N과 M은 100보다 작거나 같고, 행렬의 원소는 절댓값이 100보다
 1 1 -1
 */
 
+const fs = require("fs");
+const inputData = fs.readFileSync(0).toString().trim().split('\n')
+
+console.log(inputData);
