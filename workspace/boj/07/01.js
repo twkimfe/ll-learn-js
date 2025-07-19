@@ -152,3 +152,10 @@ const fs = require("fs");
 const inputData = fs.readFileSync(0).toString().trim().split('\n')
 
 console.log(inputData);
+const [N, M] = inputData[0].split(' ').map(Number)
+
+let arrA = 0;
+  for (let i = 1; i < N; i++) {
+    arrA += inputData[i]
+}
+console.log(arrA);
