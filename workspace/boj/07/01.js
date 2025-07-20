@@ -150,12 +150,28 @@ N과 M은 100보다 작거나 같고, 행렬의 원소는 절댓값이 100보다
 
 const fs = require("fs");
 const inputData = fs.readFileSync(0).toString().trim().split('\n')
+// console.log(inputData);
 
-console.log(inputData);
+// ai 도움으로 풀이 도출
 const [N, M] = inputData[0].split(' ').map(Number)
 
-let arrA = 0;
-  for (let i = 1; i < N; i++) {
-    arrA += inputData[i]
-}
-console.log(arrA);
+let arrA = [];
+let arrB = [];
+  for (let i = 1; i <= N; i++) {
+    arrA.push(inputData[i].split(' ').map(Number))
+  }
+
+  for (let j = N + 1; j <= 2 * N; j++) {
+    arrB.push(inputData[j].split(' ').map(Number))
+  }
+// console.log(arrA);
+// console.log(arrB);
+
+let arrC = []
+  for (let i = 0; i < N; i++) {
+    let row = [];
+      for (let j = 0; j < M; j++) {
+        row.push(arrA[i][j] + arrB[i][j])
+    }
+    console.log(row.join(' '));
+  }
